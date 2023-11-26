@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_library_anggota" model="ir.actions.report">
+        <field name="name">Daftar Pinjaman Buku</field>
+        <field name="model">library.anggota</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library.report_anggota</field>
+        <field name="report_file">library.report_anggota</field>
+        <field name="print_report_name">'%s - %s -%s' % (object.nis, object.name, object.day.strftime('%d-%m-%Y'))</field>
+        <field name="binding_model_id" ref="model_library_anggota"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

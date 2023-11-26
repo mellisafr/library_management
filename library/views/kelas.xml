@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="library_kelas_view_form" model="ir.ui.view">
+        <field name="name">library_kelas.view.form</field>
+        <field name="model">library.kelas</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group string="Tentang Penulis">
+                        <field name="name" />
+                    </group>
+                    <notebook>
+                        <page name="member" string="List Anggota">
+                            <field name="member_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_kelas_view_kanban" model="ir.ui.view">
+        <field name="name">library_kelas.view.kanban</field>
+        <field name="model">library.kelas</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                            <br/>
+                            <field name="member_ids" widget="many2many_tags"/>
+                            <div name="tags"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="library_kelas_view_search" model="ir.ui.view">
+        <field name="name">library_kelas.view.search</field>
+        <field name="model">library.kelas</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_kelas" model="ir.actions.act_window">
+        <field name="name">Kelas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.kelas</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum Ada Kelas
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="library_kelas"
+            name="Kelas"
+            parent="library_config"
+            sequence="10"
+            action="action_kelas"/>
+
+</odoo>

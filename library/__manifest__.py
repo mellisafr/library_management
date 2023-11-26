@@ -1,0 +1,28 @@
+{
+    'name': 'Library System',
+    'version': '16.0',
+    'summary': 'Arkana Final Task: Library System',
+    'description': 'Library System',
+    'category': 'Productivity',
+    'author': 'Mellisa Fitriana Rozady',
+    'license': 'LGPL-3',
+    'depends': ['base', 'contacts'],
+    'data': [
+        # 'security/security_school_group_access.xml',
+        # 'security/security.xml',
+        'security/ir.model.access.csv',
+        'views/menu.xml',
+        'views/book.xml',
+        'views/kelas.xml',
+        'views/anggota.xml',
+        'views/writer.xml',
+        'views/publisher.xml',
+        'views/borrowed.xml',
+        'views/returned.xml',
+        # 'report/absensi_report.xml',
+        # 'report/ir_actions_report.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True
+}

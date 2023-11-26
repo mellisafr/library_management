@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="library_borrowed_view_form" model="ir.ui.view">
+        <field name="name">library_borrowed.view.form</field>
+        <field name="model">library.borrowed</field>
+        <field name="arch" type="xml">
+            <form string="Informasi Peminjaman">
+                <header>
+                    <button name="action_dipinjam" type="object" string="Mulai Pinjam" class="btn-primary"
+                                attrs="{'invisible': [('state','not in','draft')]}"/>
+                    <button name="action_selesai" type="object" string="Sudah Kembali" class="btn-primary"
+                            attrs="{'invisible': [('state','not in','ongoing')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="borrow_code" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="librarian" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group name="borrower" string="Peminjam">
+                            <field name="member_id" />
+                            <field name="book_id" />
+                        </group>
+                        <group name="date" string="Tanggal Pinjam">
+                            <field name="borrow_date" />
+                            <field name="due_date" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="library_borrowed_view_kanban" model="ir.ui.view">
+        <field name="name">library_borrowed.view.kanban</field>
+        <field name="model">library.borrowed</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <field name="borrow_code" />
+                        <field name="member_id" />
+                        <field name="book_id" />
+                        <field name="borrow_date" />
+                        <field name="due_date" />
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> -->
+
+    <record id="library_borrowed_view_tree" model="ir.ui.view">
+        <field name="name">library_borrowed.view.tree</field>
+        <field name="model">library.borrowed</field>
+        <field name="arch" type="xml">
+            <tree string="Informasi Peminjaman">
+                <field name="borrow_code" />
+                <field name="member_id" />
+                <field name="book_id" />
+                <field name="borrow_date" />
+                <field name="due_date" />
+                <field name="state" widget="badge" decoration-warning="state == 'draft'" decoration-info="state == 'ongoing'" decoration-success="state == 'returned'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_borrowed" model="ir.actions.act_window">
+        <field name="name">Informasi Peminjam</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.borrowed</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum Ada Peminjaman
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="library_borrowed"
+            name="Peminjaman"
+            parent="library_transaction"
+            sequence="1"
+            action="action_borrowed"/>
+
+</odoo>

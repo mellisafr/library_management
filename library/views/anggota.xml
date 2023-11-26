@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="library_anggota_view_form" model="ir.ui.view">
+        <field name="name">library_anggota.view.form</field>
+        <field name="model">library.anggota</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Identitas" col="2">
+                        <group>
+                            <field name="nis" />
+                            <field name="gender" />
+                        </group>
+                        <group>
+                            <field name="name" />
+                            <field name="class_id" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="borrow" string="Peminjaman">
+                            <field name="borrow_ids" />
+                        </page>
+                        <page name="return" string="Pengembalian">
+                            <field name="return_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_anggota_view_tree" model="ir.ui.view">
+        <field name="name">library_anggota.view.tree</field>
+        <field name="model">library.anggota</field>
+        <field name="arch" type="xml">
+            <tree string="tree">
+                <field name="nis" />
+                <field name="name" />
+                <field name="gender" />
+                <field name="class_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="library_anggota_view_search" model="ir.ui.view">
+        <field name="name">library_anggota.view.search</field>
+        <field name="model">library.anggota</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="class_id" />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_anggota" model="ir.actions.act_window">
+        <field name="name">Anggota</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.anggota</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Anggota belum ditambahkan
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="library_anggota"
+        name="Anggota"
+        parent="library_config"
+        sequence="7"
+        action="action_anggota"/>
+
+</odoo>

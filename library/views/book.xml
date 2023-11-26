@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="library_book_form_view" model="ir.ui.view">
+            <field name="name">library_book.form.view</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <form string="TEST">
+                    <sheet>
+                        <group string="Identitas Buku" col="2">
+                          <group>
+                              <field name="no_inventaris"/>
+                              <field name="isbn"/>
+                              <field name="publish_year"/>
+                          </group>
+                          <group>
+                              <field name="name"/>
+                              <field name="writer_id" widget="many2many_tags"/>
+                              <field name="publisher_id"/>
+                          </group>
+                        </group>
+                        <notebook>
+                          <page name="borrowed" string="List Peminjaman">
+                              <field name="borrow_ids"/>
+                          </page>
+                          <page name="returned" string="List Pengembalian">
+                              <field name="return_ids"/>
+                          </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="library_book_view_tree" model="ir.ui.view">
+            <field name="name">library_book.view.tree</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <tree string="Daftar Buku">
+                    <field name="no_inventaris" />
+                    <field name="name" />
+                    <field name="writer_id" />
+                    <field name="publisher_id" />
+                    <field name="publish_year" />
+                    <field name="isbn" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- <record id="library_book_view_kanban" model="ir.ui.view">
+            <field name="name">library_book.view.kanban</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_kanban_record_has_image_fill o_data_mip_kanban}}">
+                            <div class="oe_kanban_details">
+                            <div style="background-color: #f2f2f2;     border: 1px solid #dddddd;     border-radius: 4px;     padding: 10px;     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); color: #333333;" class="o_kanban_tags_section">
+                                <ul>
+                                    <li>No Inventaris: <field name="no_inventaris" /></li>
+                                    <li>Nama: <field name="name" /></li>
+                                    <li>Penulis: <field name="writer_id" widget="many2many_tags"/></li>
+                                    <li>Penerbit: <field name="publisher_id" /></li>
+                                    <li>Thn Terbit: <field name="publish_year" /></li>
+                                    <li>ISBN: <field name="isbn" /></li>
+                                </ul>
+                            </div>
+                            </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record> -->
+
+        <record id="library_book_view_search" model="ir.ui.view">
+            <field name="name">library_book.view.search</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="no_inventaris" />
+                    <field name="name" />
+                    <field name="writer_id" />
+                    <field name="publisher_id" />
+                    <field name="publish_year" />
+                    <field name="isbn" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_book" model="ir.actions.act_window">
+            <field name="name">Buku</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">library.book</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Buku belum ditambahkan
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="library_book"
+            name="Buku"
+            parent="library_config"
+            sequence="6"
+            action="action_book"/>
+    
+    </data>
+</odoo>

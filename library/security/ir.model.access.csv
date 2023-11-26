@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_library_book,library.book,model_library_book,base.group_user,1,1,1,1
+access_library_kelas,library.kelas,model_library_kelas,base.group_user,1,1,1,1
+access_library_anggota,library.anggota,model_library_anggota,base.group_user,1,1,1,1
+access_library_writer,library.writer,model_library_writer,base.group_user,1,1,1,1
+access_library_publisher,library.publisher,model_library_publisher,base.group_user,1,1,1,1
+access_library_borrowed,library.borrowed,model_library_borrowed,base.group_user,1,1,1,1
+access_library_returned,library.returned,model_library_returned,base.group_user,1,1,1,1
